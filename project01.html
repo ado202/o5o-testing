@@ -119,6 +119,24 @@
                 <!-- Main -->
                 <div id="main">
                 
+                   
+                    <div class="audiowrapper">
+                           <audio controls autoplay loop preload="auto" style="filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+    width: 200px;
+    height: 25px; position: fixed; top: 90vh; right: 42%">
+                               <source src="audio/O5O%20feat%20......(Marseille),%20..........(Paris),%20.........(Santo%20Domingo),%20.............(Berlin)%20-%20La%20Conexi%C3%B3n.mp3" type="audio/mp3">
+                               <source src="audio/O5O-%20Jim%20Jones.wav" type="audio/mp3">
+                               <source src="audio/O5O-%20Regeatton%20Afro%20Trap.mp3" type="audio/mp3">
+                               <source src="audio/O5O-%20Smooth%20R&B.mp3" type="audio/mp3">
+                               
+                           </audio>
+</audio>
+                            
+                        </div>
+                   
+                   
+                   
+                   
                     <!-- Hero Section -->
                     <div id="hero" class="has-image">
                         <div id="hero-styles" class="parallax-onscroll">
@@ -296,7 +314,54 @@
     <div id="clone-image"></div>
     <div id="rotate-device"></div>
     
-    
+    <script>
+
+function setCookie(c_name,value,exdays)
+{
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+    document.cookie=c_name + "=" + c_value;
+}
+
+function getCookie(c_name)
+{
+    var i,x,y,ARRcookies=document.cookie.split(";");
+    for (i=0;i<ARRcookies.length;i++)
+    {
+      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+      x=x.replace(/^\s+|\s+$/g,"");
+      if (x==c_name)
+        {
+        return unescape(y);
+        }
+      }
+}
+
+var song = document.getElementsByTagName('audio')[0];
+var played = false;
+var tillPlayed = getCookie('timePlayed');
+function update()
+{
+    if(!played){
+        if(tillPlayed){
+        song.currentTime = tillPlayed;
+        song.play();
+        played = true;
+        }
+        else {
+                song.play();
+                played = true;
+        }
+    }
+
+    else {
+    setCookie('timePlayed', song.currentTime);
+    }
+}
+setInterval(update,1000);
+</script>
 		
     <script src="js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
